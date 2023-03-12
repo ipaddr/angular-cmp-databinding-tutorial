@@ -1,40 +1,11 @@
 <div class="container">
-  <div class="row">
-    <div class="col-12">
-      <p>Add new customer or priority customer</p>
-      <label>Customer Name</label>
-      <input type="text" class="form-control" [(ngModel)]="newCustomerName">
-      <label>Customer Balance</label>
-      <input type="text" class="form-control" [(ngModel)]="newCustomerBalance">
-      <br>
-      <button 
-      class="btn btn-primary"
-      (click)="onAddCustomer()">
-        Add Customer
-      </button>
-      <button 
-      class="btn btn-primary"
-      (click)="onAddPriorityCustomer()">
-        Add Priority Customer
-      </button>
-    </div>
-  </div>
+    <app-submission></app-submission>
   <hr>
   <div class="row">
     <div class="col-12">
-      <div 
-      class="card card body"
-      *ngFor="let customer of customers">
-        <div class="card-title"><strong>{{customer.name}}</strong></div>
-        <div class="card-text">
-          <p>
-            <strong *ngIf="customer.type === 'normal'" style="color: red;">
-              {{customer.balance}}
-            </strong>
-            <em *ngIf="customer.type === 'priority'">{{customer.balance}}</em>
-          </p>
-        </div>
-      </div>
+        <app-viewer 
+        *ngFor="let customer of customers"
+        [customerViewAlias]="customer"></app-viewer>
     </div>
   </div>
 </div>

@@ -1,0 +1,20 @@
+<div class="row">
+<div class="col-12">
+    <p>Add new customer or priority customer</p>
+    <label>Customer Name</label>
+    <input type="text" class="form-control" [(ngModel)]="newCustomerName">
+    <label>Customer Balance</label>
+    <input type="text" class="form-control" [(ngModel)]="newCustomerBalance">
+    <br>
+    <button 
+    class="btn btn-primary"
+    (click)="onAddCustomer()">
+    Add Customer
+    </button>
+    <button 
+    class="btn btn-primary"
+    (click)="onAddPriorityCustomer()">
+    Add Priority Customer
+    </button>
+</div>
+</div>
