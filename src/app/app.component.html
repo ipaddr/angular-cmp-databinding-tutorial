@@ -23,10 +23,10 @@
   <div class="row">
     <div class="col-12">
       <div 
-      class="panel panel-default"
+      class="card card body"
       *ngFor="let customer of customers">
-        <div class="panel-heading">{{customer.name}}</div>
-        <div class="panel-body">
+        <div class="card-title"><strong>{{customer.name}}</strong></div>
+        <div class="card-text">
           <p>
             <strong *ngIf="customer.type === 'normal'" style="color: red;">
               {{customer.balance}}
