@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild,  ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-submission',
@@ -6,24 +6,32 @@ import { Component } from '@angular/core';
   styleUrls: ['./submission.component.css']
 })
 export class SubmissionComponent {
+  @Output() normalCustomerCreated = new EventEmitter<{name: string, balance: number}>();
+  @Output() priorityCustomerCreated = new EventEmitter<{name: string, balance: number}>();
+
+  @ViewChild('refCustomerName') refCustomerNameViewChild: ElementRef  ;
 
   newCustomerName = '';
   newCustomerBalance = 0;
 
   onAddCustomer(){
-    // this.customers.push({
-    //   type:'normal',
-    //   name: this.newCustomerName,
-    //   balance: this.newCustomerBalance
-    // });
+    // console.log(refCustomerName.value);
+    // console.log(this.refCustomerNameViewChild.nativeElement.value);
+    this.normalCustomerCreated.emit(
+      {
+        name: this.newCustomerName,
+        balance: this.newCustomerBalance
+      }
+    );
   }
 
   onAddPriorityCustomer(){
-    // this.customers.push({
-    //   type:'priority',
-    //   name: this.newCustomerName,
-    //   balance: this.newCustomerBalance
-    // });
+    this.priorityCustomerCreated.emit(
+      {
+        name: this.newCustomerName,
+        balance: this.newCustomerBalance
+      }
+    )
   }
 
 }

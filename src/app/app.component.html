@@ -1,11 +1,27 @@
 <div class="container">
-    <app-submission></app-submission>
+    <app-submission
+    (normalCustomerCreated)="onCustomerAdded($event)"
+    (priorityCustomerCreated)="onPriorityCustomerAdded($event)"
+    ></app-submission>
   <hr>
   <div class="row">
     <div class="col-12">
+        <button class="btn btn-primary" (click)="onChangeFirstCustomer()">Change First Customer</button>
+        <button class="btn btn-danger" (click)="onDestroyFirstCustomer()">Destroy First Customer</button>
         <app-viewer 
         *ngFor="let customer of customers"
-        [customerViewAlias]="customer"></app-viewer>
+        [customerViewAlias]="customer"
+        [name]="customer.name"
+        >
+        
+        <p #contentParagraf>
+          <strong *ngIf="customer.type === 'normal'" style="color: red;">
+              {{customer.balance}}
+          </strong>
+          <em *ngIf="customer.type === 'priority'">{{customer.balance}}</em>
+        </p>
+
+      </app-viewer>
     </div>
   </div>
-</div>
+</div>  
